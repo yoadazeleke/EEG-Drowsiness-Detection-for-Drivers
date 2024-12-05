@@ -8,8 +8,7 @@
 5. [Timeline](#timeline)
 6. [Limitations and Acknowledgments](#limitations-and-acknowledgments)
 7. [Conclusion](#conclusion)
-8. [License](#license)
-9. [References](#references)
+8. [References](#references)
 
 ---
 
@@ -92,13 +91,7 @@ This project uses **EEG data**, **machine learning**, and **data visualization**
 
 ---
 
-## **8. License**
-
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
-
----
-
-## **9. References**
+## **8. References**
 
 - **Dataset**: [Sleepy Driver EEG Brainwave Data - Kaggle](https://www.kaggle.com/datasets/naddamuhhamed/sleepy-driver-eeg-brainwave-data)
 - **Original Student Proposal**: [Graduation Project Proposal](https://drive.google.com/file/d/1n70BcMPvtGzscGGgcBA8ruXdO0AuEr_v/view)
