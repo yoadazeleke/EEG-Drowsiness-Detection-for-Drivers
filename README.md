@@ -4,7 +4,11 @@ This repository contains the analysis and model development for detecting drowsi
 
 ### Project Overview
 
-In this project, we work with a Kaggle EEG dataset that records normalized features derived from different brainwave frequency bands. The goal is to classify these states using machine learning models and feature engineering techniques.
+In this project, I am working with a Kaggle EEG dataset that records normalized features derived from different brainwave frequency bands. The goal is to classify these states using machine learning models and feature engineering techniques. As a psychology graduate, my interest in understanding human cognition, behavior, and mental states led me to explore this intersection of neuroscience, psychology, and machine learning.
+
+With a background in psychology and a strong focus on data analysis and AI, I have been keen to apply my skills to real-world problems, such as detecting drowsiness and improving safety. This project is a perfect example of how data science can be used to understand cognitive states and prevent issues like driver fatigue, a major cause of accidents.
+
+Dataset: [Kaggle EEG Dataset](https://www.kaggle.com/datasets/naddamuhhamed/sleepy-driver-eeg-brainwave-data)
 
 ---
 
@@ -21,18 +25,26 @@ In this project, we work with a Kaggle EEG dataset that records normalized featu
 
 ## Introduction
 
-The objective of this project is to explore EEG data to classify a person's cognitive state as "sleepy" or "not sleepy." EEG data consists of several frequency bands (e.g., Delta, Theta, Alpha, Beta, Gamma), which are measured during brain activity. We use this data to develop a model that can predict whether a person is drowsy based on these brainwaves.
+The objective of this project is to explore EEG data to classify a person's cognitive state as "sleepy" or "not sleepy." EEG data consists of several frequency bands (e.g., Delta, Theta, Alpha, Beta, Gamma), which are measured during brain activity. I leverage these data points to develop a machine learning model capable of detecting drowsiness.
+
+Drawing on my psychology background, particularly my focus on cognitive science and behavior, I was motivated to apply machine learning to study brain activity. Recognizing the importance of accurate detection in drowsiness, such as preventing accidents or improving well-being, I was inspired to delve into this project.
+
+---
+
+**Additional Resources:**
+- **Student Proposal**: [Google Drive - Proposal](https://drive.google.com/file/d/1n70BcMPvtGzscGGgcBA8ruXdO0AuEr_v/view)
+- **Google Sheets Data**: [Google Sheets - Data](https://docs.google.com/spreadsheets/d/1v2mqMf1OF_VShRepqr2qyPqbUJO1ix8q0m8wZJq95Hc/edit?gid=1694143717#gid=1694143717)
 
 ---
 
 ## Dataset Overview
 
-The dataset contains normalized features for different brainwave frequency bands and a classification label for each instance. The classification label indicates whether the subject was "not sleepy" (0) or "sleepy" (1) based on EEG readings.
+The dataset contains normalized features for different brainwave frequency bands and a classification label for each instance. The classification label indicates whether the subject was "not sleepy" (0) or "sleepy" (1) based on EEG readings. Understanding these features and their relationships with cognitive states is central to developing predictive models for drowsiness detection.
 
-The key features in the dataset include:
-- Delta, Theta, LowAlpha, HighAlpha, LowBeta, HighBeta, LowGamma, HighGamma (Brainwave frequency bands)
-- Derived features (ratios and differences between frequency bands)
-- Classification (binary: 0 for "Not Sleepy", 1 for "Sleepy")
+Key features in the dataset:
+- **Brainwave frequency bands**: Delta, Theta, LowAlpha, HighAlpha, LowBeta, HighBeta, LowGamma, HighGamma.
+- **Derived features**: Ratios and differences between frequency bands.
+- **Classification label**: 0 for "Not Sleepy", 1 for "Sleepy".
 
 ---
 
@@ -42,10 +54,10 @@ The key features in the dataset include:
 
 1. **Dataset Familiarization**
    - Loaded the dataset for initial exploration.
-   - Identified key variables (e.g., Delta, Theta, Classification).
-  
+   - Identified key variables such as **Delta**, **Theta**, **Classification**.
+
 2. **Data Cleaning**
-   - Removed irrelevant features like *Attention* and *Meditation* as they did not contribute meaningfully to the analysis.
+   - Removed irrelevant features like *Attention* and *Meditation* as they didn’t contribute meaningfully to the analysis.
    - Cleaned data by removing outliers and handling missing or zero values. Standardized column names for consistency.
 
 3. **Feature Engineering**
@@ -133,14 +145,11 @@ Evaluated models using **accuracy**, **precision**, **recall**, **F1 score**, an
 
 ## Results
 
-After training and evaluating multiple models, **Gradient Boosting** performed the best, offering the highest accuracy and F1 score in distinguishing between sleepy and non-sleepy states. The model demonstrated excellent recall, which is important in scenarios where detecting sleepiness is crucial (e.g., driving drowsiness detection).
+This process provides a clear foundation for future work, where the trained model will be used for future predictions. Additionally, there is potential for further experimentation and optimization to improve the model's classification accuracy.
 
 ---
 
 ## Conclusions
 
 1. **Feature Engineering**: Ratios and derived features significantly improved model performance. Features such as **`Delta_Theta_Ratio`** and **`Theta_LowAlpha_Ratio`** were strong indicators for drowsiness detection.
-2. **Model Performance**: **Gradient Boosting** outperformed other models, yielding the best overall performance metrics.
-3. **Future Improvements**: 
-   - Explore more advanced feature engineering techniques.
-   - Investigate the use of deep learning models for better performance in real-time applications.
+2. **Model Performance**: **Gradient Boosting** outperformed other models, yielding the best
