@@ -1,98 +1,117 @@
-# **EEG-Based Drowsiness Detection System for Drivers**
+# EEG-Based Drowsiness Detection
 
-## **Table of Contents**
+This repository contains the analysis and model development for detecting drowsiness based on EEG (electroencephalography) brainwave data. The project utilizes machine learning techniques to identify whether a subject is in a "sleepy" or "not sleepy" state based on various EEG features.
+
+### Project Overview
+
+In this project, we work with a Kaggle EEG dataset that records normalized features derived from different brainwave frequency bands. The goal is to classify these states using machine learning models and feature engineering techniques.
+
+---
+
+## Table of Contents
+
 1. [Introduction](#introduction)
-2. [Project Methodology](#project-methodology)
-3. [Real-World Application](#real-world-application)
-4. [Tools and Technologies](#tools-and-technologies)
-5. [Timeline](#timeline)
-6. [Limitations and Acknowledgments](#limitations-and-acknowledgments)
-7. [Conclusion](#conclusion)
-8. [References](#references)
+2. [Dataset Overview](#dataset-overview)
+3. [Day 1 - Data Cleaning and Preparation](#day-1-data-cleaning-and-preparation)
+4. [Day 2 - Exploratory Data Analysis (EDA)](#day-2-exploratory-data-analysis-eda)
+5. [Feature Engineering](#feature-engineering)
+6. [Modeling and Results](#modeling-and-results)
+7. [Conclusions](#conclusions)
 
 ---
 
-## **1. Introduction**
+## Introduction
 
-### **1.1 Background**
-This project is based on a dataset originally collected by a group of students using the **NeuroSky MindWave EEG sensor**. The dataset includes brainwave signals recorded from drivers in two states: **sleepy** and **not sleepy**. The original project aimed to detect drowsiness in drivers to reduce accidents caused by fatigue. The students used **machine learning algorithms** to classify these states, achieving an accuracy of **82%**. 
-
-This project builds on their work by improving the model’s performance and exploring further applications. The dataset can be accessed on **Kaggle**: [Sleepy Driver EEG Brainwave Data](https://www.kaggle.com/datasets/naddamuhhamed/sleepy-driver-eeg-brainwave-data). Additionally, the original student proposal that details their methodology can be found [here](https://drive.google.com/file/d/1n70BcMPvtGzscGGgcBA8ruXdO0AuEr_v/view).
-
-### **1.2 My Background**
-I have a background in **psychology** and **mental health**, and I’m passionate about how **data analysis** and **AI** can solve real-world problems. My experience in **UX/UI design** allows me to create systems that are not only effective but also user-friendly, with a focus on **driver safety** and **autonomous vehicles**.
-
-### **1.3 Project Objective**
-This project aims to:
-- Preprocess and analyze the **EEG dataset** to classify **sleepy** vs. **not sleepy** states.
-- Improve the machine learning models used to predict drowsiness.
-- Use **Tableau** to visualize insights from the model.
-- Explore real-world applications in **autonomous vehicles** and **wearables** for **driver safety**.
+The objective of this project is to explore EEG data to classify a person's cognitive state as "sleepy" or "not sleepy." EEG data consists of several frequency bands (e.g., Delta, Theta, Alpha, Beta, Gamma), which are measured during brain activity. We use this data to develop a model that can predict whether a person is drowsy based on these brainwaves.
 
 ---
 
-## **2. Project Methodology**
+## Dataset Overview
 
-### **2.1 Objective**
-The goal is to develop a model that predicts whether a driver is **sleepy** or **not sleepy** based on EEG data.
+The dataset contains normalized features for different brainwave frequency bands and a classification label for each instance. The classification label indicates whether the subject was "not sleepy" (0) or "sleepy" (1) based on EEG readings.
 
-### **2.2 Actions**
-- Clean and preprocess the data (handle missing values, remove noise).
-- Train machine learning models (e.g., **Random Forest**, **SVM**) to classify drowsiness.
-- Visualize results in **Tableau** for easy understanding.
-
-### **2.3 Process**
-- **Data Exploration**: Understand the dataset by analyzing EEG features.
-- **Model Training**: Apply machine learning algorithms to classify drowsiness.
-- **Results**: Evaluate the model’s performance and visualize insights.
+The key features in the dataset include:
+- Delta, Theta, LowAlpha, HighAlpha, LowBeta, HighBeta, LowGamma, HighGamma (Brainwave frequency bands)
+- Derived features (ratios and differences between frequency bands)
+- Classification (binary: 0 for "Not Sleepy", 1 for "Sleepy")
 
 ---
 
-## **3. Real-World Application**
+## Day 1 - Data Cleaning and Preparation
 
-This project addresses real-world safety concerns related to **drowsy driving**. It can be applied in:
-- **Semi-autonomous vehicles**: Monitoring driver alertness and alerting them when they’re too fatigued.
-- **Wearables**: Monitoring cognitive states like drowsiness in real-time.
+### Data Exploration and Initial Analysis
 
----
+**Morning: Data Preparation (2-3 hours)**
 
-## **4. Tools and Technologies**
-- **Tableau**: For creating interactive visualizations and dashboards.
-- **Kaggle**: For dataset exploration and comparison with other models.
-- **R**: For data preprocessing, analysis, and machine learning model development.
-- **Google Sheets**: For organizing and reviewing data.
-- **SQL**: For querying large datasets if needed.
+1. **Dataset Familiarization**
+   - Loaded the dataset into R and Google Sheets for initial exploration.
+   - Identified key variables (e.g., delta, theta, classification).
 
----
+2. **Data Cleaning**
+   - Removed irrelevant features like *Attention* and *Meditation* as they were not contributing meaningfully to the analysis.
+   - Cleaned data by deleting outliers and handling missing or zero values. Standardized column names for consistency.
 
-## **5. Timeline**
-
-| **Day** | **Tasks**                                      | **Time (hours)** |
-|---------|-----------------------------------------------|-----------------|
-| **Day 1** | Data exploration and preprocessing            | 4               |
-| **Day 2** | Model development and evaluation              | 4               |
-| **Day 3** | Advanced models and insights                  | 4               |
-| **Day 4** | Documentation, sharing, and final refinements | 4               |
+3. **Feature Engineering**
+   - Derived new features that could improve the model’s ability to distinguish between the two states:
+     - `Theta_LowAlpha_Ratio`
+     - `Theta_HighAlpha_Ratio`
+     - `Delta_Theta_Ratio`
+     - `Total_Alpha`, `Total_Beta`, `Total_Gamma`
+     - `High_Low_Alpha_Diff`, `High_Low_Beta_Diff`, `High_Low_Gamma_Diff`
+   - Ensured data was clean, with no missing or erroneous values.
 
 ---
 
-## **6. Limitations and Acknowledgments**
+## Day 2 - Exploratory Data Analysis (EDA)
 
-- **Dataset Limitations**: The dataset includes only four drivers, limiting its generalizability.
-- **Sensor Limitations**: The **NeuroSky MindWave** uses a single electrode, which provides less data compared to medical-grade multi-electrode EEG systems.
-  
-**Acknowledgments**: Special thanks to the original student project team for their work in EEG-based drowsiness detection and providing the dataset for further exploration.
+On Day 2, the focus shifted to conducting **Exploratory Data Analysis (EDA)** to better understand the dataset and identify potential patterns and relationships in the features.
+
+### Key Observations:
+
+1. **Skewed Distributions**:
+   - Most features, including Delta, Theta, LowAlpha, HighAlpha, LowBeta, HighBeta, LowGamma, and HighGamma, exhibited skewed distributions, with many values clustered at the lower end of the scale.
+
+2. **Class Imbalance**:
+   - The classification variable (Sleepy/Not Sleepy) showed a slight imbalance with more "Not Sleepy" samples than "Sleepy."
+
+3. **Derived Features**:
+   - Ratios like `Theta_LowAlpha_Ratio`, `Theta_HighAlpha_Ratio`, and `Delta_Theta_Ratio` showed skewness, with median values lower than the means.
+
+4. **Box Plot Analysis**:
+   - **Key Indicators**:
+     - `Delta_Theta_Ratio`, `Theta_HighAlpha_Ratio`, and `Theta_LowAlpha_Ratio` showed potential for distinguishing drowsiness.
+   - **Weak Indicators**:
+     - Features like Delta, Theta, and the total Alpha, Beta, and Gamma exhibited overlapping distributions between alert and drowsy states.
+
+### Histograms:
+- Many features demonstrated **right-skewed distributions**, while some (like `High_Low_Alpha_Diff`) had **bimodal** distributions, indicating the presence of distinct subgroups.
+- Features like `Delta_Theta_Ratio` and `Theta_LowAlpha_Ratio` revealed meaningful patterns for differentiating between the two states.
 
 ---
 
-## **7. Conclusion**
+## Feature Engineering
 
-This project uses **EEG data**, **machine learning**, and **data visualization** to address the problem of **drowsy driving**. By improving drowsiness detection models and sharing insights through visualizations, this work contributes to **autonomous vehicle** safety and the development of **wearable devices** for driver alertness monitoring.
+### New Features Derived:
+- **Theta_LowAlpha_Ratio**: Ratio of Theta and Low Alpha waves.
+- **Theta_HighAlpha_Ratio**: Ratio of Theta and High Alpha waves.
+- **Delta_Theta_Ratio**: Ratio of Delta and Theta waves.
+- **Total_Alpha**: Total Alpha power across all channels.
+- **Total_Beta**: Total Beta power across all channels.
+- **Total_Gamma**: Total Gamma power across all channels.
+- **High_Low_Alpha_Diff**: Difference between High and Low Alpha.
+- **High_Low_Beta_Diff**: Difference between High and Low Beta.
+- **High_Low_Gamma_Diff**: Difference between High and Low Gamma.
+
+These new features were engineered to capture relationships between the various brainwave activities, aiming to improve the model’s predictive power.
 
 ---
 
-## **8. References**
+## Modeling and Results
 
-- **Dataset**: [Sleepy Driver EEG Brainwave Data - Kaggle](https://www.kaggle.com/datasets/naddamuhhamed/sleepy-driver-eeg-brainwave-data)
-- **Original Student Proposal**: [Graduation Project Proposal](https://drive.google.com/file/d/1n70BcMPvtGzscGGgcBA8ruXdO0AuEr_v/view)
-- **Google Sheets Data**: [Google Sheets - EEG Data](https://docs.google.com/spreadsheets/d/1v2mqMf1OF_VShRepqr2qyPqbUJO1ix8q0m8wZJq95Hc/edit?gid=1694143717#gid=1694143717)
+After completing the data exploration and cleaning, various machine learning models (e.g., Logistic Regression, Random Forest, SVM) will be trained to classify the data. Evaluation metrics such as accuracy, precision, recall, and F1-score will be used to assess model performance.
+
+---
+
+## Conclusions
+
+The EDA revealed important insights into the distribution of EEG features, class imbalance, and potential indicators for drowsiness. On Day 2, the focus was on understanding these features and planning the next steps in model development and performance evaluation.
